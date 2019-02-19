@@ -1,4 +1,4 @@
-git通过ssh上传文件到github的方法
+﻿git通过ssh上传文件到github的方法
 （1）新建一个仓库之后，点击设置，点击SSH and GPG keys 添加名字和公钥密码
 （2）生成SSH key 打开bash  1.检查是否已经有SSH Key$ cd ~/.ssh；2.生成SSH Keyssh-keygen -t rsa -C "youremail"；3，打开路径将其粘贴进去；
 	4.测试是否成功$ssh -T git@github.com
@@ -42,3 +42,6 @@ or push an existing repository from the command line
 git remote add origin git@github.com:morningStary/temp.git
 git push -u origin master
 
+
+第一次 打开文件夹目录；将要上传的文件先复制到该目录；然后git add .;git commit -m " ";实现关联；git push -u origin master即可
+第二次 git add .;git commit -m " "; git push origin master
