@@ -1,0 +1,44 @@
+git通过ssh上传文件到github的方法
+（1）新建一个仓库之后，点击设置，点击SSH and GPG keys 添加名字和公钥密码
+（2）生成SSH key 打开bash  1.检查是否已经有SSH Key$ cd ~/.ssh；2.生成SSH Keyssh-keygen -t rsa -C "youremail"；3，打开路径将其粘贴进去；
+	4.测试是否成功$ssh -T git@github.com
+（3）上传文件：1.git clone 项目地址;2打开所要上传的目录;3.git init;4.git add .;5.git commit -m "你的注释";6.git remote add origin 项目地址
+	7.若出现错误：则使用命令 git remote rm origin，再执行一次 git remote add origin 项目地址；8.git push origin master；
+	
+	如果其中有错误的话 就是github上的remdme.cd 文件不在  先执行git pull --rebase origin master即可
+	
+	
+	
+	
+总结：
+	 1、在本地创建一个版本库（即文件夹），通过git init把它变成Git仓库；
+
+     2、把项目复制到这个文件夹里面，再通过git add .把项目添加到仓库；
+
+     3、再通过git commit -m “注释内容”把项目提交到仓库；
+
+     4、在Github上设置好SSH密钥后，新建一个远程仓库，通过git remote add origin 地址 将本地仓库和远程仓库进行关联；
+
+     5、最后通过git push -u origin master把本地仓库的项目推送到远程仓库（也就是Github）上；（若新建远程仓库的时候自动创建了README文件会报错，解决办法看上面）。
+	  以后就是 git push origin master 
+	
+	git init，初始化，表示即将对当前文件夹进行版本控制。
+    git status，查看Git当前状态，如：那些文件被修改过、那些文件还未提交到版本库等。
+    git add 文件名，将指定文件添加到版本库的暂存状态。
+    git commit -m '提交信息'，将暂存区的文件提交到版本库的分支。
+    git log，查看提交记录，即：历史版本记录
+
+
+or create a new repository on the command line
+
+echo "# temp" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin git@github.com:morningStary/temp.git
+git push -u origin master
+
+or push an existing repository from the command line
+git remote add origin git@github.com:morningStary/temp.git
+git push -u origin master
+
